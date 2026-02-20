@@ -1,0 +1,19 @@
+#+TITLE: 个人静态网站开源
+* 简介
+这是个人部署在kikowiwu上的静态网站的全部源码，代码部分基于GPL授权，文章、图片、音乐、视频等其它非代码资产全部用PPL协议授权。
+
+* Copyright
+All code contained within this repository is licensed under the GNU
+General Public License, version 3 (GPLv3). You are free to use,
+modify, and distribute the code, provided that you comply with the
+terms and conditions of the GPLv3 license. A copy of the GPLv3 license
+is included in the LICENSE.GPL.txt file.
+
+All non-code assets, including but not limited to articles, images,
+music, and videos, are licensed under the Peer Production License
+(PPL). You are permitted to use, perform, and display these assets
+publicly, provided that you comply with the terms and conditions of
+the PPL. A copy of the PPL is included in the LICENSE.PPL.txt file.
+
+For any questions or clarifications regarding the use of the code or
+non-code assets, please contact the copyright holder at minkieyume@yumieko.com.
