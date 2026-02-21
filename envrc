@@ -1,0 +1,2 @@
+use guix
+export GUILE_LOAD_PATH=$PWD/modules:"$GUILE_LOAD_PATH"
