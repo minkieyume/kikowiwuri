@@ -9,7 +9,63 @@
   #:use-module (sxml match)
   #:export (yumieko-theme))
 
-(define )
+;; (define (sidebar))
+
+(define (navbar site)
+  `(nav (@ (class "navbar navbar-expand-sm bg-light"))
+	(div (@ (class "container-fluid"))
+	     (a (@ (href "/")
+		   (class "navbar-brand"))
+		(span ,(site-title site))))))
+
+(define (footer site)
+  `(footer (@ (class "footer"))
+	   (div (@ (class "copyright"))
+		(div (p "© " ,(number->string (date-year (current-date))) " Minkie Yume ")
+		     (p "Power by "
+			(a (@ (href "https://dthompson.us/projects/haunt.html"))
+			   "haunt")
+			" ,source can be found "
+			(a (@ (href "/"))
+			   "here"))))))
+
+(define (sidebar site)
+  `())
+
+(define (yumieko-layout site title body)
+  `((doctype "html")
+    (html (@ (lang "zh-CN")))
+    (head
+     (meta (@ (charset "utf-8")))
+     (meta (@ (name "viewport")
+              (content "width=device-width, initial-scale=1")))
+     (link (@ (href "/styles/style.css")
+	      (rel "stylesheet")))
+     (link (@ (href "https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css")
+	      (rel "stylesheet")))
+     (script (@ (src "https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js")))
+     (meta (@ (property "og:site_name")
+              (content ,(site-title site))))
+     (meta (@ (property "og:image")
+              (content "https://favicon.png")))
+     (meta (@ (name "fediverse:creator")
+              (content "minkieyume@example.com")))
+     (title ,(string-append title " — " (site-title site)))
+     (link (@ (rel "alternative")
+              (href "/feed.xml")
+              (title ,(site-title site))
+              (type "application/atom+xml")))
+     (link (@ (rel "alternative")
+              (href "/rss2.xml")
+              (title ,(site-title site))
+              (type "application/rss+xml"))))
+    (body
+     ,(navbar site)
+     (div (@ (class "container main"))
+	  (div (@ (class "container eko"))
+	       ,body))
+     ,(footer site))))
 
 (define yumieko-theme
-  (theme #:name "yumieko"))
+  (theme #:name "yumieko"
+	 #:layout yumieko-layout))
