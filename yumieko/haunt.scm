@@ -22,4 +22,5 @@
 		       (rss-feed #:subtitle "最近日记
 " #:file-name "rss2.xml")
                        (static-directory "images")
-		       (static-directory "assets")))
+		       (static-directory "assets")
+		       (static-directory "main" "/")))
