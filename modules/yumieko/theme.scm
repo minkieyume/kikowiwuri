@@ -52,12 +52,6 @@
 
 (define (sidebar-right site)
   `(aside (@ (class "sidebar-right"))
-	  ;; ,(if post
-          ;;      `(div (@ (class "sidebar-widget"))
-	  ;; 	     (div (@ (class "sidebar-widget-title")) "目录")
-	  ;; 	     (ul
-	  ;; 	      ,(parse-post-toc post)))
-          ;;      '())
           (div (@ (class "sidebar-widget"))
                (div (@ (class "sidebar-widget-title")) "链接")
                (div (@ (class "subscribe-links"))
