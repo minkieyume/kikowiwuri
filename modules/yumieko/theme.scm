@@ -9,14 +9,18 @@
   #:use-module (sxml match)
   #:export (yumieko-theme))
 
-;; (define (sidebar))
-
-(define (navbar site)
-  `(nav (@ (class "navbar navbar-expand-sm bg-light"))
+(define (navbar site title)
+  `(nav (@ (class "navbar navbar-expand-sm sticky-top"))
 	(div (@ (class "container-fluid"))
 	     (a (@ (href "/")
 		   (class "navbar-brand"))
-		(span ,(site-title site))))))
+		(span ,(site-title site)))
+	     (span (@ (class "nav-title mx-auto")) ,title)
+	     (div (@ (class "d-flex gap-2"))
+                  (a (@ (href "/") (class "nav-link")) "秘密基地")
+                  (a (@ (href "/tags.html") (class "nav-link")) "标签")
+                  (a (@ (href "/friends.html") (class "nav-link")) "友链")
+                  (a (@ (href "/about.html") (class "nav-link")) "关于")))))
 
 (define (footer site)
   `(footer (@ (class "footer"))
@@ -29,8 +33,33 @@
 			(a (@ (href "/"))
 			   "here"))))))
 
-(define (sidebar site)
-  `())
+(define (parse-post-toc post)
+  (let loop ((sxml (post-sxml post))
+             (result '()))
+    (match sxml
+      (() (reverse result) )
+      ((`(,hl (@ (id ,hid)) ,headline)  tail ...)
+       (if (char=? #\h (string-ref (symbol->string hl) 0))
+           (loop tail (cons `(li (a (@ (href ,(string-append "#" hid)))
+                                    ,headline))
+                            result))
+           (loop tail result)))
+      ((head . tail)
+       (loop tail result)))))
+
+(define (sidebar-right site)
+  `(aside (@ (class "sidebar-right"))
+	  ;; ,(if post
+          ;;      `(div (@ (class "sidebar-widget"))
+	  ;; 	     (div (@ (class "sidebar-widget-title")) "目录")
+	  ;; 	     (ul
+	  ;; 	      ,(parse-post-toc post)))
+          ;;      '())
+          (div (@ (class "sidebar-widget"))
+               (div (@ (class "sidebar-widget-title")) "链接")
+               (div (@ (class "subscribe-links"))
+                    (a (@ (href "/feed.xml")) "✦ 订阅 (Atom)")
+		    (a (@ (href "/rss2.xml")) "✦ 订阅 (RSS)")))))
 
 (define (yumieko-layout site title body)
   `((doctype "html")
@@ -39,11 +68,16 @@
      (meta (@ (charset "utf-8")))
      (meta (@ (name "viewport")
               (content "width=device-width, initial-scale=1")))
-     (link (@ (href "/styles/style.css")
-	      (rel "stylesheet")))
      (link (@ (href "https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css")
 	      (rel "stylesheet")))
      (script (@ (src "https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js")))
+     (link (@ (href "/assets/style.css")
+	      (rel "stylesheet")))
+     (meta (@ (property "og:title")
+              (content
+               ,(string-append title
+                               " — "
+                               (site-title site)))))
      (meta (@ (property "og:site_name")
               (content ,(site-title site))))
      (meta (@ (property "og:image")
@@ -60,12 +94,60 @@
               (title ,(site-title site))
               (type "application/rss+xml"))))
     (body
-     ,(navbar site)
+     ,(navbar site title)
      (div (@ (class "container main"))
 	  (div (@ (class "container eko"))
-	       ,body))
+	       ,body)
+	  ,(sidebar-right site))
      ,(footer site))))
+
+(define (yumieko-post post)
+  `(article (@ (class "post-content"))
+            (h1 (@ (class "post-title")) ,(post-title post))
+            (div (@ (class "post-meta"))
+		 (span "| ")
+		 (span ,(string-append "By "(post-author post)))
+		 (span " ✦ ")
+                 (span ,(date->string (post-date post) "~Y 年 ~m 月 ~d 日"))
+		 (span " |"))
+	    (p (@ (class "post-summary")) ,(post-ref post 'summary))
+            (div (@ (class "post-body"))
+                 ,@(post-sxml post))))
+
+(define (yumieko-pagination site body previous-page next-page)
+  `((,@body
+     (div (@ (class "pagination"))
+          ,(if previous-page
+               `(a (@ (class "btn")
+                      (href ,previous-page))
+                   "← 上一页")
+               `(a (@ (class "btn disabled"))
+                   "← 上一页"))
+          (a (@ (class "btn") (href "/")) " 主页 ")
+          ,(if next-page
+               `(a (@ (class "btn")
+                      (href ,next-page))
+                   "下一页 →")
+               `(a (@ (class "btn disabled"))
+                   "下一页 →"))))))
+
+(define (post-card post)
+  (let ((summary (post-ref post 'summary))
+	(title (post-title post))
+	(date (date->string (post-date post) "~Y 年 ~m 月 ~d 日")))
+    `(article (@ (class "post-card"))
+              (h2 (a (@ (href ,(string-append "/posts/" (post-slug post) ".html")))
+                     ,title ,@(if date `(" - " ,date) '())))
+              ,@(if summary `((p (@ (class "post-summary")) ,summary)) '()))))
+
+(define (yumieko-post-collections site title posts prefix)
+  `(div (@ (class "post-list"))
+	(h1 ,title)
+        ,@(map post-card posts)))
 
 (define yumieko-theme
   (theme #:name "yumieko"
-	 #:layout yumieko-layout))
+	 #:layout yumieko-layout
+	 #:post-template yumieko-post
+	 #:collection-template yumieko-post-collections
+	 #:pagination-template yumieko-pagination))
