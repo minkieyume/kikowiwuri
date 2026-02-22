@@ -18,8 +18,11 @@
 	     (span (@ (class "nav-title mx-auto")) ,title)
 	     (div (@ (class "d-flex gap-2"))
                   (a (@ (href "/") (class "nav-link")) "秘密基地")
-                  (a (@ (href "/tags.html") (class "nav-link")) "标签")
-                  (a (@ (href "/friends.html") (class "nav-link")) "友链")
+		  (a (@ (href "/") (class "nav-link")) "归档")
+		  (a (@ (href "/tags.html") (class "nav-link")) "标签")
+		  (a (@ (href "/saikin.html") (class "nav-link")) "近况")
+		  (a (@ (href "/use.html") (class "nav-link")) "爱用")
+                  (a (@ (href "/friends.html") (class "nav-link")) "友链")		  
                   (a (@ (href "/about.html") (class "nav-link")) "关于")))))
 
 (define (footer site)

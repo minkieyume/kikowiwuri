@@ -51,7 +51,7 @@ body {
     color: var(--text-muted) !important;
 }
 .navbar .nav-link {
-    font-size: 1.0rem;
+    font-size: 0.9rem;
     padding: 0.25rem 0.75rem;
     color: var(--text-muted) !important;
 }
