@@ -147,7 +147,7 @@
 	(title (post-title post))
 	(date (date->string (post-date post) "~Y 年 ~m 月 ~d 日")))
     `(article (@ (class "post-card"))
-              (h2 (a (@ (href ,(string-append "/posts/" (post-slug post) ".html")))
+              (h2 (a (@ (href ,(string-append "/posts/" (post-slug post))))
                      ,title ,@(if date `(" - " ,date) '())))
               ,@(if summary `((div (@ (class "post-summary")) ,@summary)) '()))))
 
