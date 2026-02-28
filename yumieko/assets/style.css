@@ -13,7 +13,7 @@
 }
 
 html {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 body {
@@ -267,6 +267,31 @@ a:visited {
 .post-body p,
 .post-body li,
 .post-body blockquote {
+    color: var(--text-main) !important;
+}
+
+.post-body h1 {
+    font-size: 1.9rem;
+    color: var(--text-main) !important;
+}
+
+.post-body h2 {
+    font-size: 1.7rem;
+    color: var(--text-main) !important;
+}
+
+.post-body h3 {
+    font-size: 1.5rem;
+    color: var(--text-main) !important;
+}
+
+.post-body h4 {
+    font-size: 1.3rem;
+    color: var(--text-main) !important;
+}
+
+.post-body h5 {
+    font-size: 1.1rem;
     color: var(--text-main) !important;
 }
 

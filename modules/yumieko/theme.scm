@@ -20,7 +20,7 @@
 		(span ,(site-title site)))
 	     (span (@ (class "nav-title mx-auto")) ,title)
 	     (div (@ (class "d-flex gap-2"))
-                  (a (@ (href "/") (class "nav-link")) "秘密基地")
+                  (a (@ (href "https://www.yumieko.com/") (class "nav-link")) "秘密基地")
 		  (a (@ (href "/") (class "nav-link")) "归档")
 		  (a (@ (href "/tags.html") (class "nav-link")) "标签")
                   (a (@ (href "/friends.html") (class "nav-link")) "友链")
@@ -51,6 +51,12 @@
       ((head . tail)
        (loop tail result)))))
 
+(define (convert-summary post-summary)
+  (if post-summary
+      (map (lambda (sm)
+	     `(p ,sm)) (string-split post-summary #\tab))
+      #f))
+
 (define (sidebar-right site)
   `(aside (@ (class "sidebar-right"))
 	  (div (@ (class "sidebar-widget"))
@@ -63,7 +69,8 @@
                (div (@ (class "subscribe-links"))
 		    (a (@ (href "/saikin.html")) "✦ 最近在干嘛？")
 		    (a (@ (href "/use.html")) "✦ 爱用什么玩意？")
-		    (a (@ (href "/suki.html")) "✦ 喜欢的东西？")))))
+		    (a (@ (href "/suki.html")) "✦ 喜欢什么东西？")
+		    (a (@ (href "/suki-sites.html")) "✦ 推荐什么网站？")))))
 
 (define (yumieko-layout site title body)
   `((doctype "html")
@@ -114,7 +121,7 @@
 		 (span " ✦ ")
                  (span ,(date->string (post-date post) "~Y 年 ~m 月 ~d 日"))
 		 (span " |"))
-	    (p (@ (class "post-summary")) ,(post-ref post 'summary))
+	    (div (@ (class "post-summary")) ,@(convert-summary (post-ref post 'summary)))
             (div (@ (class "post-body"))
                  ,@(post-sxml post))))
 
@@ -136,13 +143,13 @@
                    "下一页 →"))))))
 
 (define (post-card post)
-  (let ((summary (post-ref post 'summary))
+  (let ((summary (convert-summary (post-ref post 'summary)))
 	(title (post-title post))
 	(date (date->string (post-date post) "~Y 年 ~m 月 ~d 日")))
     `(article (@ (class "post-card"))
               (h2 (a (@ (href ,(string-append "/posts/" (post-slug post) ".html")))
                      ,title ,@(if date `(" - " ,date) '())))
-              ,@(if summary `((p (@ (class "post-summary")) ,summary)) '()))))
+              ,@(if summary `((div (@ (class "post-summary")) ,@summary)) '()))))
 
 (define (yumieko-post-collections site title posts prefix)
   `(div (@ (class "post-list"))

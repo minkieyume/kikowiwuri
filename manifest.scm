@@ -2,4 +2,5 @@
  (specifications->packages
   '(
     "guile"
-    "haunt")))
+    "haunt"
+    "guile-orgfile")))
