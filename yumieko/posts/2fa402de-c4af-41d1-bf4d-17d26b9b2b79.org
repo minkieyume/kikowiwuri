@@ -1,7 +1,7 @@
 #+title: 2026GGJ创作心得
 #+date: 2026-02-03T19:24:04
-#+modified: 2026-02-27T19:31:47
-#+tags: 创作心得 2026 GGJ GlobalGameJam Trial
+#+modified: 2026-03-01T15:38:41
+#+tags: 创作心得 2026 GGJ GlobalGameJam gamejam Trial
 #+summary: 最近刚参加完2026年的GlobalGamejam，回家休息了一整天，感觉精神重新振作起来了，现在差不多可以汇总和复盘下这次的Gamejam。	这一次Gamejam的主题是Mask，说到Mask，我理解到的是拉丁文词源Masque的引申含义，即伪装。
 * 序
 最近刚参加完2026年的GlobalGamejam，回家休息了一整天，感觉精神重新振作起来了，现在差不多可以汇总和复盘下这次的Gamejam。

@@ -11,6 +11,8 @@
 	     (yumieko reader org-reader)
 	     (yumieko theme))
 
+(load "/home/minkieyume/Creator/remote/密码/secret/secret-ip.scm")
+
 (site #:title "明琪的日记"
       #:domain "yumieko.kikowiwu.com"
       #:default-metadata
@@ -28,4 +30,4 @@
 		       (static-directory "main" "/"))
       #:publishers (list (rsync-publisher #:user "minkieyume"
 					  #:destination "/var/lib/www/yumieko.kikowiwu.com"
-					  #:host "chikocloud-sg")))
+					  #:host %chikocloud-sg)))
