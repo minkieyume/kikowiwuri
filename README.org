@@ -2,6 +2,11 @@
 * 简介
 这是个人部署在kikowiwu上的静态网站的全部源码，代码部分基于GPL授权，文章、图片、音乐、视频等其它非代码资产全部用PPL协议授权。
 
+* 代码借用
+本站构建的部分代码借用自：
+https://git.southfox.me/southfox/blog
+https://dthompson.us/projects/haunt.html
+
 * Copyright
 All code contained within this repository is licensed under the GNU
 General Public License, version 3 (GPLv3). You are free to use,
