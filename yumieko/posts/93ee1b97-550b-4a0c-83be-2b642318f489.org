@@ -1,8 +1,8 @@
 #+title: 只有我会这样吗？
 #+date: 2026-02-27T11:41:17
-#+modified: 2026-02-27T16:18:23
+#+modified: 2026-03-01T20:46:42
 #+tags: 个人 兴趣 小众 社恐
-#+summary: 這是我的「[[https://blogblog.club/party/][BlogBlog 同樂會 - 2026 年 2 月]]」的投稿文章。本月主題是「[[https://wiwi.blog/blog/blogblog-party-feb-2026/][只有我這樣嗎？]]」，由 [[https://wiwi.blog/][Wiwi]] 主持。如果你有自己的部落格，歡迎一起來參加！
+#+summary: 這是我的「BlogBlog 同樂會 - 2026 年 2 月」的投稿文章。本月主題是「只有我這樣嗎？」，由 Wiwi 主持。如果你有自己的部落格，歡迎一起來參加！
 * 前言
 #+begin_quote
 這是我的「[[https://blogblog.club/party/][BlogBlog 同樂會 - 2026 年 2 月]]」的投稿文章。本月主題是「[[https://wiwi.blog/blog/blogblog-party-feb-2026/][只有我這樣嗎？]]」，由 [[https://wiwi.blog/][Wiwi]] 主持。如果你有自己的部落格，歡迎一起來參加！

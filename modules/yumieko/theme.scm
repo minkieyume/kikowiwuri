@@ -41,7 +41,7 @@
 			(a (@ (href "https://dthompson.us/projects/haunt.html"))
 			   "haunt")
 			" ,source can be found "
-			(a (@ (href "/"))
+			(a (@ (href "https://github.com/minkieyume/kikowiwuri"))
 			   "here"))))))
 
 (define (parse-post-toc post)

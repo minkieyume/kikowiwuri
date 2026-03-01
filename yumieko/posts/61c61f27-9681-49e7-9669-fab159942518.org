@@ -1,6 +1,6 @@
 #+title: 夜之城传说-创作日志#6
 #+date: 2025-10-19T13:58:30
-#+modified: 2026-03-01T16:08:30
+#+modified: 2026-03-01T20:13:17
 #+tags: 夜之城传说 游戏日志 创作日志
 #+summary: 大家好，这里明琪。不知不觉就到了10月中旬了呢……	这段时间，我也做了许多的事情。比如重装了下电脑系统、重构了项目的档案、做完了一个Godot插件、尝试了许多新的技术、又画了几幅新的画。	我已经迫不及待地想把这段时间的经历一一分享出来了。
 * 前言
@@ -131,7 +131,7 @@ https://www.yumieko.com/galleries/moon-night-yumi/
 
 顺带一提，这张画，是之前画的怪盗夜猫——小琪设定图：
 
-https://www.yumieko.com/galleries/%E6%B0%B8%E5%A4%9C%E9%83%BD%E5%B8%82%E7%9A%84%E4%BC%A0%E8%AF%B4/
+[[https://www.yumieko.com/galleries/%E6%B0%B8%E5%A4%9C%E9%83%BD%E5%B8%82%E7%9A%84%E4%BC%A0%E8%AF%B4/]]
 
 [[/夜之城的传说.jpg]]
 

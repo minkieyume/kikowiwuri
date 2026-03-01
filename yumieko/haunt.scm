@@ -25,8 +25,8 @@
 			     #:post-prefix "posts"
 			     #:collections `(("最近日记" "index.html" ,posts/reverse-chronological))
 			     #:posts-per-page 10)
-                       (atom-feed #:subtitle "最近日记")
-		       (rss-feed #:subtitle "最近日记" #:file-name "rss2.xml")
+                       (atom-feed #:subtitle "最近日记" #:max-entries 1000)
+		       (rss-feed #:subtitle "最近日记" #:file-name "rss2.xml" #:max-entries 1000)
 		       (archives-page)
 		       (tag-page)
 		       (tags->page)
