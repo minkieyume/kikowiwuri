@@ -10,6 +10,7 @@
              (haunt site)
 	     (yumieko reader org-reader)
 	     (yumieko builder tags)
+	     (yumieko builder pages)
 	     (yumieko theme))
 
 (load "/home/minkieyume/Creator/remote/密码/secret/secret-ip.scm")
@@ -26,6 +27,7 @@
 			     #:posts-per-page 10)
                        (atom-feed #:subtitle "最近日记")
 		       (rss-feed #:subtitle "最近日记" #:file-name "rss2.xml")
+		       (archives-page)
 		       (tag-page)
 		       (tags->page)
                        (static-directory "images")

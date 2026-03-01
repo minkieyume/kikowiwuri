@@ -21,7 +21,7 @@
 	     (span (@ (class "nav-title mx-auto")) ,title)
 	     (div (@ (class "d-flex gap-2"))
                   (a (@ (href "https://www.yumieko.com/") (class "nav-link")) "秘密基地")
-		  (a (@ (href "/") (class "nav-link")) "归档")
+		  (a (@ (href "/archives") (class "nav-link")) "归档")
 		  (a (@ (href "/tags") (class "nav-link")) "标签")
                   (a (@ (href "/friends.html") (class "nav-link")) "友链")
                   (a (@ (href "/about.html") (class "nav-link")) "关于")))))
@@ -29,7 +29,14 @@
 (define (footer site)
   `(footer (@ (class "footer"))
 	   (div (@ (class "copyright"))
-		(div (p "© " ,(number->string (date-year (current-date))) " Minkie Yume ")
+		(div (p "© " ,(number->string (date-year (current-date))) " Minkie Yume 版权所有。"
+			"本站资产由 "
+			(a (@ (href "/posts/peer-production-license.html"))
+			   "PPL")
+			" 协议授权，源代码由 "
+			(a (@ (href "https://www.gnu.org/licenses/gpl-3.0.en.html"))
+			   "GPL3.0")
+			" 协议授权。")
 		     (p "Power by "
 			(a (@ (href "https://dthompson.us/projects/haunt.html"))
 			   "haunt")

@@ -89,7 +89,7 @@ with that TAG."
 			 (with-layout
 			  theme
 			  site
-			  "Tags"
+			  "标签"
 			  `(div (@ (class "content"))
 				(h2 "标签")
 				(ul
